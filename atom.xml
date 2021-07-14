@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>黄芝育的博客</title>
+  
+  <subtitle>记录所学、所感</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-07-14T02:56:00.407Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>黄芝育</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDEA设置</title>
+    <link href="http://example.com/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://example.com/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/</id>
+    <published>2021-07-14T01:16:17.707Z</published>
+    <updated>2021-07-14T02:56:00.407Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;安装完IDEA,需要进行的个人配置&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;鼠标滑轮调整字体大小&lt;br&gt;File-&amp;gt;Settings-&amp;gt;Editor-&amp;gt;General-&amp;gt;勾选Change font size (Zoom) with Ctrl+Mouse</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="IDEA" scheme="http://example.com/tags/IDEA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java8 新特性</title>
+    <link href="http://example.com/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://example.com/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/</id>
+    <published>2021-07-14T01:16:17.704Z</published>
+    <updated>2021-07-14T02:55:39.121Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Java8-新特性&quot;&gt;&lt;a href=&quot;#Java8-新特性&quot; class=&quot;headerlink&quot; title=&quot;Java8 新特性&quot;&gt;&lt;/a&gt;Java8 新特性&lt;/h2&gt;&lt;h2 id=&quot;1、接口的默认方法和静态方法&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="http://example.com/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1111111111</title>
+    <link href="http://example.com/2021/07/13/111111111111111111111/"/>
+    <id>http://example.com/2021/07/13/111111111111111111111/</id>
+    <published>2021-07-13T15:30:14.809Z</published>
+    <updated>2021-07-14T01:17:36.165Z</updated>
+    
+    
+    
+    
+    
+    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>second</title>
+    <link href="http://example.com/2021/07/13/second/"/>
+    <id>http://example.com/2021/07/13/second/</id>
+    <published>2021-07-13T14:09:27.082Z</published>
+    <updated>2021-07-14T01:19:36.144Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1&quot;&gt;&lt;a href=&quot;#1&quot; class=&quot;headerlink&quot; title=&quot;1&quot;&gt;&lt;/a&gt;1&lt;/h1&gt;&lt;p&gt;内容&lt;/p&gt;
+&lt;h1 id=&quot;2&quot;&gt;&lt;a href=&quot;#2&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>first</title>
+    <link href="http://example.com/2021/07/13/first/"/>
+    <id>http://example.com/2021/07/13/first/</id>
+    <published>2021-07-13T14:07:56.000Z</published>
+    <updated>2021-07-14T02:55:53.822Z</updated>
+    
+    
+    
+    
+    
+    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/07/13/hello-world/"/>
+    <id>http://example.com/2021/07/13/hello-world/</id>
+    <published>2021-07-13T13:51:42.538Z</published>
+    <updated>2021-07-14T01:17:57.545Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a class=&quot;link&quot;   href=&quot;https://hexo.io/&quot; &gt;Hexo&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/a&gt;! This is your very first post.</summary>
+        
+      
+    
+    
+    
+    
+    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+</feed>
