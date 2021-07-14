@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-07-14T02:56:00.407Z</updated>
+  <updated>2021-07-14T07:29:24.056Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,131 +17,70 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>IDEA设置</title>
-    <link href="http://example.com/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://example.com/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/</id>
-    <published>2021-07-14T01:16:17.707Z</published>
-    <updated>2021-07-14T02:56:00.407Z</updated>
+    <title>SpringBoot-Vue部署阿里云liunx服务器</title>
+    <link href="http://example.com/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://example.com/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/</id>
+    <published>2021-07-14T07:20:59.959Z</published>
+    <updated>2021-07-14T07:29:24.056Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;安装完IDEA,需要进行的个人配置&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;鼠标滑轮调整字体大小&lt;br&gt;File-&amp;gt;Settings-&amp;gt;Editor-&amp;gt;General-&amp;gt;勾选Change font size (Zoom) with Ctrl+Mouse</summary>
-        
-      
-    
-    
-    
-    <category term="工具" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-    <category term="IDEA" scheme="http://example.com/tags/IDEA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8 新特性</title>
-    <link href="http://example.com/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/"/>
-    <id>http://example.com/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/</id>
-    <published>2021-07-14T01:16:17.704Z</published>
-    <updated>2021-07-14T02:55:39.121Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Java8-新特性&quot;&gt;&lt;a href=&quot;#Java8-新特性&quot; class=&quot;headerlink&quot; title=&quot;Java8 新特性&quot;&gt;&lt;/a&gt;Java8 新特性&lt;/h2&gt;&lt;h2 id=&quot;1、接口的默认方法和静态方法&quot;&gt;&lt;a</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;SpringBoot - Vue 前后端分离项目确保能够在本机完成前后端连接，正常访问！&lt;/li&gt;
+&lt;li&gt;阿里云部署了 java 环境。&lt;/li&gt;
+&lt;li&gt;配好 mysql 环境。&lt;/li&gt;
+&lt;li&gt;Tomcat 不用也行，因为SpringBoot 已经内置了Tomcat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;一、前后端合并&quot;&gt;&lt;a href=&quot;#一、前后端合并&quot; class=&quot;headerlink&quot; title=&quot;一、前后端合并&quot;&gt;&lt;/a&gt;一、前后端合并&lt;/h1&gt;&lt;p&gt;1、打包 前端静态资源&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vue 中的项目文件的 url 改为 服务器的IP 地址，不是本地的IP地址。&lt;/li&gt;
+&lt;li&gt;确保打包前的Vue 项目没有任何错误！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在项目的路径下打开cmd 输入 &lt;code&gt;npm run build&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171245.png&quot; alt=&quot;image-20201024171238333&quot;&gt;&lt;/p&gt;
+&lt;p&gt;看到输出 &lt;code&gt;Build complete&lt;/code&gt; 即代表打包成功！&lt;/p&gt;</summary>
     
     
     
-    <category term="Java" scheme="http://example.com/categories/Java/"/>
+    <category term="服务器" scheme="http://example.com/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
-    <category term="Java" scheme="http://example.com/tags/Java/"/>
+    <category term="项目部署" scheme="http://example.com/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
   <entry>
-    <title>1111111111</title>
-    <link href="http://example.com/2021/07/13/111111111111111111111/"/>
-    <id>http://example.com/2021/07/13/111111111111111111111/</id>
-    <published>2021-07-13T15:30:14.809Z</published>
-    <updated>2021-07-14T01:17:36.165Z</updated>
+    <title>一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理</title>
+    <link href="http://example.com/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"/>
+    <id>http://example.com/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</id>
+    <published>2021-07-14T07:07:55.454Z</published>
+    <updated>2021-07-14T07:38:55.097Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;初衷：我在网上想找整合springboot+mybatis+shiro并且多角色认证的博客，发现找了好久也没有找到想要的，现在自己会了，就打算写个博客分享出去,希望能帮到你。&lt;br&gt;原创不易，请点赞支持！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;该项目不会将过多基础，直接实战，比较使用于有一点基础的， 并且想整合springboot+mybatis+shiro的朋友们。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;代码和数据库sql都放在github,链接如下：&lt;a href=&quot;https://github.com/zhiyuwyu/springboot-mybatis-shiro.git&quot;&gt;https://github.com/zhiyuwyu/springboot-mybatis-shiro.git&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1、了解需求&quot;&gt;&lt;a href=&quot;#1、了解需求&quot; class=&quot;headerlink&quot; title=&quot;1、了解需求&quot;&gt;&lt;/a&gt;1、了解需求&lt;/h2&gt;&lt;h3 id=&quot;1-1、需求&quot;&gt;&lt;a href=&quot;#1-1、需求&quot; class=&quot;headerlink&quot; title=&quot;1.1、需求&quot;&gt;&lt;/a&gt;1.1、需求&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;首页页面必须登录成功之后才能访问&lt;/li&gt;
+&lt;li&gt;所有用户、游客等都可访问登录页面、测试页面，无需登录&lt;/li&gt;
+&lt;li&gt;拥有 root 角色的用户可以访问所有页面，包括添加页面、删除页面、查询页面、测试页面等&lt;/li&gt;
+&lt;li&gt;拥有admin 角色的用户可以访问添加页面，查询页面、测试页面，除了删除页面不能访问&lt;/li&gt;
+&lt;li&gt;拥有 user 角色的用户可以访问 查询页面、测试页面，除了添加页面、删除页面不能访问</summary>
     
     
     
+    <category term="整合" scheme="http://example.com/categories/%E6%95%B4%E5%90%88/"/>
     
     
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
     
-  </entry>
-  
-  <entry>
-    <title>second</title>
-    <link href="http://example.com/2021/07/13/second/"/>
-    <id>http://example.com/2021/07/13/second/</id>
-    <published>2021-07-13T14:09:27.082Z</published>
-    <updated>2021-07-14T01:19:36.144Z</updated>
+    <category term="Mybatis" scheme="http://example.com/tags/Mybatis/"/>
     
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;1&quot;&gt;&lt;a href=&quot;#1&quot; class=&quot;headerlink&quot; title=&quot;1&quot;&gt;&lt;/a&gt;1&lt;/h1&gt;&lt;p&gt;内容&lt;/p&gt;
-&lt;h1 id=&quot;2&quot;&gt;&lt;a href=&quot;#2&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>first</title>
-    <link href="http://example.com/2021/07/13/first/"/>
-    <id>http://example.com/2021/07/13/first/</id>
-    <published>2021-07-13T14:07:56.000Z</published>
-    <updated>2021-07-14T02:55:53.822Z</updated>
-    
-    
-    
-    
-    
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2021/07/13/hello-world/"/>
-    <id>http://example.com/2021/07/13/hello-world/</id>
-    <published>2021-07-13T13:51:42.538Z</published>
-    <updated>2021-07-14T01:17:57.545Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a class=&quot;link&quot;   href=&quot;https://hexo.io/&quot; &gt;Hexo&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/a&gt;! This is your very first post.</summary>
-        
-      
-    
-    
-    
-    
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+    <category term="Shiro" scheme="http://example.com/tags/Shiro/"/>
     
   </entry>
   

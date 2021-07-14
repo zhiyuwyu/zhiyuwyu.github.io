@@ -49,7 +49,7 @@
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
+      <img src="/images/cover4.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">HuangZhiyuBlog</a></h1>
@@ -78,7 +78,7 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        strings: ['Better Mind Better Life', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
         startDelay: 0,
         typeSpeed: 200,
         loop: true,
@@ -158,7 +158,7 @@
     
     
     <article
-  id="post-IDEA设置"
+  id="post-SpringBoot-Vue部署阿里云liunx服务器"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -169,8 +169,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/"
-    >IDEA设置</a> 
+  <a class="article-title" href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+    >SpringBoot-Vue部署阿里云liunx服务器</a> 
 </h2>
  
 
@@ -178,33 +178,36 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/" class="article-date">
-  <time datetime="2021-07-14T01:16:17.707Z" itemprop="datePublished">2021-07-14</time>
+      <a href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2021-07-14T07:20:59.959Z" itemprop="datePublished">2021-07-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>安装完IDEA,需要进行的个人配置</p>
-<ol>
-<li><p>鼠标滑轮调整字体大小<br>File-&gt;Settings-&gt;Editor-&gt;General-&gt;勾选Change font size (Zoom) with Ctrl+Mouse Wheel</p>
-</li>
-<li><p>调整合适的字体大小<br>File-&gt;Setting-&gt;Editor-&gt;Font-&gt;改变size大小—&gt;点击apply</p>
-</li>
-<li><p>设置 InteliJ IDEA的编码格式<br>File-&gt;Setting-&gt;Editor-&gt;File Encodings -&gt;把Global Encoding、Project Encoding、Default encoding for properties files 均设置为 UTF-8</p>
-</li>
-</ol>
-<p>4.自动 Import 包<br>File-&gt;Setting-&gt;Editor-&gt;General-&gt;Auto Import-&gt;勾选 Add unambiguous imports on the fly 和 Optimize imports on the fly (for current project)</p>
-<p>5.设置建立File、Class、Package</p>
-<p>KeyMap-&gt;Main menu-&gt;File-&gt;New<br>选择  File  -&gt; 设置为 Alt+N<br>选择  class -&gt; 设置为 Alt+C<br>选择 Create new directory or package -&gt; 设置为 Alt+P</p>
-<ol start="6">
-<li>大小写敏感关闭</li>
-</ol>
- 
+  <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><ul>
+<li>SpringBoot - Vue 前后端分离项目确保能够在本机完成前后端连接，正常访问！</li>
+<li>阿里云部署了 java 环境。</li>
+<li>配好 mysql 环境。</li>
+<li>Tomcat 不用也行，因为SpringBoot 已经内置了Tomcat</li>
+</ul>
+<h1 id="一、前后端合并"><a href="#一、前后端合并" class="headerlink" title="一、前后端合并"></a>一、前后端合并</h1><p>1、打包 前端静态资源</p>
+<p>注意：</p>
+<ul>
+<li>Vue 中的项目文件的 url 改为 服务器的IP 地址，不是本地的IP地址。</li>
+<li>确保打包前的Vue 项目没有任何错误！</li>
+</ul>
+<p>在项目的路径下打开cmd 输入 <code>npm run build</code></p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171245.png" alt="image-20201024171238333"></p>
+<p>看到输出 <code>Build complete</code> 即代表打包成功！</p> 
+      <a class="article-more-link" href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -214,7 +217,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" rel="tag">项目部署</a></li></ul>
 
     </footer>
   </div>
@@ -226,7 +229,7 @@
 
     
     <article
-  id="post-Java8 新特性"
+  id="post-一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -237,8 +240,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/"
-    >Java8 新特性</a> 
+  <a class="article-title" href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"
+    >一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理</a> 
 </h2>
  
 
@@ -246,85 +249,34 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/" class="article-date">
-  <time datetime="2021-07-14T01:16:17.704Z" itemprop="datePublished">2021-07-14</time>
+      <a href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2021-07-14T07:07:55.454Z" itemprop="datePublished">2021-07-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/%E6%95%B4%E5%90%88/">整合</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="Java8-新特性"><a href="#Java8-新特性" class="headerlink" title="Java8 新特性"></a>Java8 新特性</h2><h2 id="1、接口的默认方法和静态方法"><a href="#1、接口的默认方法和静态方法" class="headerlink" title="1、接口的默认方法和静态方法"></a>1、接口的默认方法和静态方法</h2><blockquote>
-<p>Java 8允许我们给接口添加一个非抽象的方法实现，只需要使用 default关键字即 </p>
+  <blockquote>
+<p>初衷：我在网上想找整合springboot+mybatis+shiro并且多角色认证的博客，发现找了好久也没有找到想要的，现在自己会了，就打算写个博客分享出去,希望能帮到你。<br>原创不易，请点赞支持！</p>
 </blockquote>
-<p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口默认的实现方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;i am ready to go to bed ...(接口默认方法)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">implements</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;saying...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Main main = <span class="keyword">new</span> Main();</span><br><span class="line">        main.say();</span><br><span class="line">        main.sleep();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果输出如下</span></span><br><span class="line">saying...</span><br><span class="line">i am ready to go to bed ...(接口默认方法)</span><br></pre></td></tr></table></figure>
-
-<p><strong>静态方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">interface</span> <span class="title">DefaulableFactory</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Interfaces now allow static methods</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> Defaulable <span class="title">create</span><span class="params">( Supplier&lt; Defaulable &gt; supplier )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> supplier.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2、Lambda表达式和函数式接口"><a href="#2、Lambda表达式和函数式接口" class="headerlink" title="2、Lambda表达式和函数式接口"></a>2、Lambda表达式和函数式接口</h2><ul>
-<li> Lambda表达式可以引用类成员和局部变量（会将这些变量隐式得转换成<strong>final</strong>的） </li>
-<li>函数体只有一行代码的，你可以去掉大括号{}以及return关键字 </li>
-</ul>
-<p>以前使用继承Runable 接口的形式新建一个线程，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> CusThread());</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CusThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;开启了一个新的线程...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 Lambda 表达式进行新建一个线程，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 函数体只有一行代码的，你可以去掉大括号&#123;&#125;以及return关键字 </span></span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;开启了一个新的线程...&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对，就是这么简洁</p>
-<p><strong>函数式编程</strong></p>
-<p> “函数式接口”是指<strong>仅仅只包含一个抽象方法的接口</strong>，每一个该类型的lambda表达式都会被匹配到这个抽象方法。因为默认方法 不算抽象方法，所以你也可以给你的函数式接口添加默认方法。 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加 @FunctionalInterface 注解，编译器如果发现你标注了这个注解的接口有多于一个抽象方法的时候会报错的，可有可无</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Converter</span>&lt;<span class="title">F</span>, <span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function">T <span class="title">convert</span><span class="params">(F from)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</span><br><span class="line">        Converter&lt;<span class="keyword">String</span>, <span class="keyword">Integer</span>&gt; converter = (<span class="keyword">from</span>) -&gt; <span class="keyword">Integer</span>.valueOf(<span class="keyword">from</span>);</span><br><span class="line">        <span class="keyword">Integer</span> converted = converter.convert(<span class="string">&quot;123&quot;</span>);</span><br><span class="line">        System.out.println(converted);    <span class="comment">// 123</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3、Stream"><a href="#3、Stream" class="headerlink" title="3、Stream"></a>3、Stream</h2><p> 众所周知，<strong>集合操作</strong>非常麻烦，若要对集合进行筛选、投影，需要写大量的代码，而流是以声明的形式操作集合，它就像SQL语句，我们只需告诉流需要对集合进行什么操作，它就会自动进行操作，并将执行结果交给你，无需我们自己手写代码。</p>
-<p>因此，流的集合操作对我们来说是透明的，我们只需向流下达命令，它就会自动把我们想要的结果给我们。由于操作过程完全由Java处理，因此它可以根据当前硬件环境选择最优的方法处理，我们也无需编写复杂又容易出错的多线程代码了。</p>
-<p> 特点： </p>
-<ul>
-<li>不是数据结构，不会保存数据。 </li>
-<li> 不会修改原来的数据源，它会将操作后的数据保存到另外一个对象中 </li>
-<li> 只能遍历一次 </li>
-</ul>
-<p>分类</p>
-<ul>
-<li>中间操作: 当数据源中的数据上了流水线后，这个过程对数据进行的所有操作都称为“中间操作”。<br>中间操作仍然会返回一个流对象，因此多个中间操作可以串连起来形成一个流水线。 </li>
-<li>终止操作: 当所有的中间操作完成后，若要将数据从流水线上拿下来，则需要执行终端操作。<br>终端操作将返回一个执行结果，这就是你想要的数据。 </li>
-</ul>
-<p>使用步骤</p>
-<ul>
-<li>获取集合的流（ stream()方法即可获取流对象 ）</li>
-<li>对流中的集合数据进行操作</li>
-</ul>
-<p> <strong>流的中间操作</strong> </p>
-<p> 筛选与切片 </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>：过滤流中的某些元素</span><br><span class="line"><span class="function"><span class="title">limit</span><span class="params">(n)</span></span>：获取n个元素</span><br><span class="line"><span class="function"><span class="title">skip</span><span class="params">(n)</span></span>：跳过n元素，配合limit(n)可实现分页</span><br><span class="line">distinct：通过流中元素的 hashCode() 和 equals() 去除重复元素</span><br></pre></td></tr></table></figure>
-
-<p> 映射    </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map：接收一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素。</span><br><span class="line">flatMap：接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流。</span><br></pre></td></tr></table></figure>
-
-<p> 排序 </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">orted</span><span class="params">()</span></span>：自然排序，流中元素需实现Comparable接口</span><br><span class="line"><span class="function"><span class="title">sorted</span><span class="params">(Comparator com)</span></span>：定制排序，自定义Comparator排序器  </span><br></pre></td></tr></table></figure>
-
-<p> <strong>流的终止操作</strong> </p>
-<p> 匹配、聚合操作 </p>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">allMatch：接收一个 Predicate 函数，当流中每个元素都符合该断言时才返回<span class="literal">true</span>，否则返回<span class="literal">false</span></span><br><span class="line">noneMatch：接收一个 Predicate 函数，当流中每个元素都不符合该断言时才返回<span class="literal">true</span>，否则返回<span class="literal">false</span></span><br><span class="line">anyMatch：接收一个 Predicate 函数，只要流中有一个元素满足该断言则返回<span class="literal">true</span>，否则返回<span class="literal">false</span></span><br><span class="line">findFirst：返回流中第一个元素</span><br><span class="line">findAny：返回流中的任意元素</span><br><span class="line"><span class="built_in">count</span>：返回流中元素的总个数</span><br><span class="line"><span class="built_in">max</span>：返回流中元素最大值</span><br><span class="line"><span class="built_in">min</span>：返回流中元素最小值</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、Optional类"><a href="#4、Optional类" class="headerlink" title="4、Optional类"></a>4、Optional类</h2><p>Optional 不是接口而是一个类，这是个用来防止NullPointerException异常的辅助类型<br> 在Java8之前一般某个函数应该返回非空对象但是偶尔却可能返回了null，而在Java 8中，不推荐你返回null而是返回Optional。</p>
-<p>这是一个可以为null的容器对象。</p>
-<p> 如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。</p>
- 
+<blockquote>
+<p>该项目不会将过多基础，直接实战，比较使用于有一点基础的， 并且想整合springboot+mybatis+shiro的朋友们。</p>
+</blockquote>
+<p>代码和数据库sql都放在github,链接如下：<a target="_blank" rel="noopener" href="https://github.com/zhiyuwyu/springboot-mybatis-shiro.git">https://github.com/zhiyuwyu/springboot-mybatis-shiro.git</a></p>
+<h2 id="1、了解需求"><a href="#1、了解需求" class="headerlink" title="1、了解需求"></a>1、了解需求</h2><h3 id="1-1、需求"><a href="#1-1、需求" class="headerlink" title="1.1、需求"></a>1.1、需求</h3><ul>
+<li>首页页面必须登录成功之后才能访问</li>
+<li>所有用户、游客等都可访问登录页面、测试页面，无需登录</li>
+<li>拥有 root 角色的用户可以访问所有页面，包括添加页面、删除页面、查询页面、测试页面等</li>
+<li>拥有admin 角色的用户可以访问添加页面，查询页面、测试页面，除了删除页面不能访问</li>
+<li>拥有 user 角色的用户可以访问 查询页面、测试页面，除了添加页面、删除页面不能访问 
+      <a class="article-more-link" href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -334,219 +286,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-111111111111111111111"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/13/111111111111111111111/"
-    >1111111111</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/13/111111111111111111111/" class="article-date">
-  <time datetime="2021-07-13T15:30:14.809Z" itemprop="datePublished">2021-07-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-second"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/13/second/"
-    >second</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/13/second/" class="article-date">
-  <time datetime="2021-07-13T14:09:27.082Z" itemprop="datePublished">2021-07-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>内容</p>
-<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>内容</p>
-<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>内容</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-first"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/13/first/"
-    >first</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/13/first/" class="article-date">
-  <time datetime="2021-07-13T14:07:56.000Z" itemprop="datePublished">2021-07-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/13/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/13/hello-world/" class="article-date">
-  <time datetime="2021-07-13T13:51:42.538Z" itemprop="datePublished">2021-07-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment<i class="fas fa-external-link-alt"></i></a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shiro/" rel="tag">Shiro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li></ul>
 
     </footer>
   </div>
@@ -606,7 +346,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="HuangZhiyuBlog"></a>
+    <a href="/"><img src="/images/zhiyu.jpg" alt="HuangZhiyuBlog"></a>
   </div>
   
   <ul class="nav nav-main">

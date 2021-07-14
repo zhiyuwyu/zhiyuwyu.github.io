@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>IDEA设置 |  HuangZhiyuBlog</title>
+      <title>SpringBoot-Vue部署阿里云liunx服务器 |  HuangZhiyuBlog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -46,7 +46,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-IDEA设置"
+  id="post-SpringBoot-Vue部署阿里云liunx服务器"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -57,7 +57,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  IDEA设置
+  SpringBoot-Vue部署阿里云liunx服务器
 </h1>
  
 
@@ -65,11 +65,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/" class="article-date">
-  <time datetime="2021-07-14T01:16:17.707Z" itemprop="datePublished">2021-07-14</time>
+      <a href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2021-07-14T07:20:59.959Z" itemprop="datePublished">2021-07-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
   </div>
   
 <div class="word_count">
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">187</span>
+            <span class="post-count">849</span>
         </span>
     </span>
 
@@ -86,34 +86,89 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>安装完IDEA,需要进行的个人配置</p>
-<ol>
-<li><p>鼠标滑轮调整字体大小<br>File-&gt;Settings-&gt;Editor-&gt;General-&gt;勾选Change font size (Zoom) with Ctrl+Mouse Wheel</p>
-</li>
-<li><p>调整合适的字体大小<br>File-&gt;Setting-&gt;Editor-&gt;Font-&gt;改变size大小—&gt;点击apply</p>
-</li>
-<li><p>设置 InteliJ IDEA的编码格式<br>File-&gt;Setting-&gt;Editor-&gt;File Encodings -&gt;把Global Encoding、Project Encoding、Default encoding for properties files 均设置为 UTF-8</p>
-</li>
-</ol>
-<p>4.自动 Import 包<br>File-&gt;Setting-&gt;Editor-&gt;General-&gt;Auto Import-&gt;勾选 Add unambiguous imports on the fly 和 Optimize imports on the fly (for current project)</p>
-<p>5.设置建立File、Class、Package</p>
-<p>KeyMap-&gt;Main menu-&gt;File-&gt;New<br>选择  File  -&gt; 设置为 Alt+N<br>选择  class -&gt; 设置为 Alt+C<br>选择 Create new directory or package -&gt; 设置为 Alt+P</p>
-<ol start="6">
-<li>大小写敏感关闭</li>
-</ol>
+  <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><ul>
+<li>SpringBoot - Vue 前后端分离项目确保能够在本机完成前后端连接，正常访问！</li>
+<li>阿里云部署了 java 环境。</li>
+<li>配好 mysql 环境。</li>
+<li>Tomcat 不用也行，因为SpringBoot 已经内置了Tomcat</li>
+</ul>
+<h1 id="一、前后端合并"><a href="#一、前后端合并" class="headerlink" title="一、前后端合并"></a>一、前后端合并</h1><p>1、打包 前端静态资源</p>
+<p>注意：</p>
+<ul>
+<li>Vue 中的项目文件的 url 改为 服务器的IP 地址，不是本地的IP地址。</li>
+<li>确保打包前的Vue 项目没有任何错误！</li>
+</ul>
+<p>在项目的路径下打开cmd 输入 <code>npm run build</code></p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171245.png" alt="image-20201024171238333"></p>
+<p>看到输出 <code>Build complete</code> 即代表打包成功！</p>
+<span id="more"></span>
+
+<p>2、观察项目路径下的文件目录是否多了一个dist 文件下</p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171530.png" alt="image-20201024171530665"></p>
+<p>文件夹下的内容为：</p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171712.png" alt="image-20201024171712367"></p>
+<p>3、将 static 和 index.html 文件放到SpringBoot 的resource 资源路径下的static 目录下，如果没有static 文件夹，自己新建一个static 文件下，最终复制过去之后的项目结构图如下：</p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024172039.png" alt="image-20201024172039172"></p>
+<p>4、项目打包成jar包</p>
+<p>注意：</p>
+<ul>
+<li>数据库的 url 是否正确；一般要改为服务器的IP地址，不是本地IP地址。 </li>
+</ul>
+<p>步骤一、先双击 <code>clean</code> ，静等一会</p>
+<p>步骤二、然后再双击<code> package</code> ，静等一会</p>
+<p>步骤三、观察输出框下面出现若出现 <code>BUILD SUCCESS</code> 代表 jar 包打包成功！</p>
+<p>步骤四、观察项目结构目录下的 target 是否多了一个 <code>.jar </code>包</p>
+<p>如果有，打包成功！</p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024172727.png" alt="image-20201024172726821"></p>
+<h1 id="二、jar-包-上传到服务器"><a href="#二、jar-包-上传到服务器" class="headerlink" title="二、jar 包 上传到服务器"></a>二、jar 包 上传到服务器</h1><p>我是通过 xftp 上传到服务器当中</p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024173308.png" alt="image-20201024173308001"></p>
+<h1 id="三、运行-jar"><a href="#三、运行-jar" class="headerlink" title="三、运行 jar"></a>三、运行 jar</h1><p>进入到jar 包的目录下，执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar .jar包名       </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024173554.png" alt="image-20201024173554755"></p>
+<p>这个时候就已经大功告成了！去浏览器输入服务器IP地址及端口号访问吧！</p>
+<h1 id="四、项目在服务器上自动不间断地跑"><a href="#四、项目在服务器上自动不间断地跑" class="headerlink" title="四、项目在服务器上自动不间断地跑"></a>四、项目在服务器上自动不间断地跑</h1><p>还没完呢，这种启动方式是<strong>一次启动</strong></p>
+<p>当我们关掉Xshell的时候，我们的网站又访问不上了，又得重新打开Xshell，执行 java -jar ***.jar。所以我们要使用下面的方法让这个项目在服务器上自动不间断地跑.</p>
+<p>1、关掉重启一下Xshell（这样的话原本的项目就停掉了）</p>
+<p>创建并编写文件<code> start.sh</code>,向其中添加字段 ：<code> java -jar ***.jar</code> 。</p>
+<p>按ESC + :wq + 回车键保存退出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim start.sh   <span class="comment"># 编写start.sh 文件</span></span><br><span class="line"><span class="comment">#内容如下：</span></span><br><span class="line">java -jar ***.jar　  <span class="comment"># *** 为项目jar 包的名称　　　　</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024195113.png" alt="image-20201024195113294"></p>
+<p>2、 给这个start.sh 管理员权限，然后用nohup指令不间断地运行（nohup指令：忽略所有挂断（SIGHUP）信号，不挂断地运行命令）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 start.sh  //赋予管理员权限</span><br><span class="line">nohup  ./start.sh &amp;  //不间断运行文件内的指令</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024194950.png" alt="image-20201024194949928"></p>
+<p>3、使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp | grep 8081   <span class="comment">#8080:项目的端口号 </span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024195033.png" alt="image-20201024195033347"></p>
+<h1 id="五、可能出现的问题"><a href="#五、可能出现的问题" class="headerlink" title="五、可能出现的问题"></a>五、可能出现的问题</h1><p>1、<code>com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure</code></p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024174104.png" alt="image-20201024174104249"></p>
+<p>可能的原因（列举自己的解决方案，可能会有其他的原因）</p>
+<ul>
+<li>如果是阿里云，需要保证阿里云的安全组策略是开放的</li>
+<li>确保Linux的防火墙端口是开启的</li>
+</ul>
+<p>我的原因就是防火墙端口没有开启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看firewall服务状态</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启、重启、关闭、firewalld.service服务</span></span><br><span class="line">service firewalld start   <span class="comment"># 开启</span></span><br><span class="line">service firewalld restart <span class="comment"># 重启</span></span><br><span class="line">service firewalld stop  <span class="comment"># 关闭</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看防火墙规则</span></span><br><span class="line">firewall-cmd --list-all    <span class="comment"># 查看全部信息</span></span><br><span class="line">firewall-cmd --list-ports  <span class="comment"># 只看端口信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=8081/tcp --permanent  <span class="comment">#开端口命令：</span></span><br><span class="line">systemctl restart firewalld.service   <span class="comment">#重启防火墙</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024174729.png" alt="image-20201024174729546"></p>
  
       <!-- reward -->
       
@@ -178,12 +233,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/07/14/IDEA%E8%AE%BE%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" rel="tag">项目部署</a></li></ul>
 
     </footer>
   </div>
@@ -192,9 +247,9 @@
   <nav class="article-nav">
     
     
-      <a href="/2021/07/14/Java8%20%E6%96%B0%E7%89%B9%E6%80%A7/" class="article-nav-link">
+      <a href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Java8 新特性</div>
+        <div class="article-nav-title">一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理</div>
       </a>
     
   </nav>
@@ -248,7 +303,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="HuangZhiyuBlog"></a>
+    <a href="/"><img src="/images/zhiyu.jpg" alt="HuangZhiyuBlog"></a>
   </div>
   
   <ul class="nav nav-main">
