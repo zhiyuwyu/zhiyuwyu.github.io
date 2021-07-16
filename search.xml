@@ -635,21 +635,6 @@
 </tr>
 </tbody></table>
 <p>前面案例中，之所以数据能够接收成功，是因为有上面这些默认的类型处理器，处理基本数据类型，这些够用了，特殊类型，需要我们自定义类型处理器。</p>
-<h4 id="自定义类型处理器"><a href="#自定义类型处理器" class="headerlink" title="自定义类型处理器"></a>自定义类型处理器</h4><p>比如，我有一个用户爱好的字段，这个字段，在对象中，是一个 List 集合，在数据库中，是一个 VARCHAR 字段，这种情况下，就需要我们自定义类型转换器，自定义的类型转换器提供两个功能：</p>
-<ol>
-<li>数据存储时，自动将 List 集合，转为字符串（格式自定义）</li>
-<li>数据查询时，将查到的字符串再转为 List 集合</li>
-</ol>
-<p>首先，在数据表中添加一个 favorites 字段：</p>
-<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210305134015.png" alt="image-20210305134007025"></p>
-<p>然后，在 User 对象中，添加相应的属性：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Role&gt; roles;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> enabled;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; favourite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>为了能够将 List 集合中的数据存入到 VARCHAR 中，我们需要自定义一个类型转换器：</p>
-<h3 id="mybatis-插入日期类型精确到秒的有关问题"><a href="#mybatis-插入日期类型精确到秒的有关问题" class="headerlink" title="mybatis 插入日期类型精确到秒的有关问题"></a>mybatis 插入日期类型精确到秒的有关问题</h3><p>我们都知道，Date类型是精确到时分秒的， 如果需要精确到秒以后，则需要使用 TIMESTAMP 类型</p>
-<p>如果<strong>数据库字段类型为TIMESTAMP</strong> <strong>则  #{operateTime,jdbcType=TIMESTAMP} 这样写是没有问题的</strong>。</p>
-<p>而如果数据库字段类型为 Date， POJO类属性也是Date， 这时如果使用 #{operateTime,jdbcType=Date},也许插入的数据 只精确到天，时分秒都为0.</p>
-<p>解决方法写成： #{operateTime,jdbcType=TIMESTAMP} （数据库和POJO还是Date类型）</p>
 ]]></content>
       <categories>
         <category>Mybatis</category>
