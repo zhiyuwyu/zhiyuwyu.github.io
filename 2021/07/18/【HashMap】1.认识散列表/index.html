@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> HuangZhiyuBlog</title>
+      <title>【HashMap】1.认识散列表 |  HuangZhiyuBlog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -44,120 +44,8 @@
     
       
     <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover4.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">HuangZhiyuBlog</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['Better Mind Better Life', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  <ul class="ads">
-    
-        <li>
-            <a href="">
-                <img src="" width="" alt="">
-            </a>
-        </li>
-    
-        <li>
-            <a href="">
-                <img src="" width="300" alt="">
-            </a>
-        </li>
-    
-</ul>
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
+      <section class="outer">
+  <article
   id="post-【HashMap】1.认识散列表"
   class="article article-type-post"
   itemscope
@@ -168,10 +56,9 @@
     
     <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/18/%E3%80%90HashMap%E3%80%911.%E8%AE%A4%E8%AF%86%E6%95%A3%E5%88%97%E8%A1%A8/"
-    >【HashMap】1.认识散列表</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【HashMap】1.认识散列表
+</h1>
  
 
       
@@ -184,9 +71,34 @@
   <div class="article-category">
     <a class="article-category-link" href="/categories/HashMap/">HashMap</a>
   </div>
-   
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="1-散列表是什么-What"><a href="#1-散列表是什么-What" class="headerlink" title="1 散列表是什么? What"></a>1 散列表是什么? What</h1><p>哈希表（Hash table，也叫散列表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。</p>
@@ -263,229 +175,90 @@
 
     <!-- copyright -->
     
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
     <footer class="article-footer">
        
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/07/18/%E3%80%90HashMap%E3%80%911.%E8%AE%A4%E8%AF%86%E6%95%A3%E5%88%97%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
 
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-MyBatis基础"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/16/MyBatis%E5%9F%BA%E7%A1%80/"
-    >Mybatis 基础</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/16/MyBatis%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2021-07-16T13:14:26.936Z" itemprop="datePublished">2021-07-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Mybatis/">Mybatis</a>
-  </div>
    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="MyBatis-所解决的-JDBC-中存在的问题"><a href="#MyBatis-所解决的-JDBC-中存在的问题" class="headerlink" title="MyBatis 所解决的 JDBC 中存在的问题"></a>MyBatis 所解决的 JDBC 中存在的问题</h3><ol>
-<li> 数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能</li>
-<li> Sql语句写在代码中造成代码不易维护。</li>
-<li> 向 sql 语句传参数麻烦，因为 sql 语句的 where 条件不一定，可能多也可能少，占位符需要和参数一一对应。 </li>
-</ol>
-<h3 id="入门-增删查改"><a href="#入门-增删查改" class="headerlink" title="入门-增删查改"></a>入门-增删查改</h3><p>配置Mybatis-config.xml 并连接数据库</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span></span></span><br><span class="line"><span class="tag">                          <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql:///mybatis?useUnicode=true<span class="symbol">&amp;amp;</span>characterEncoding=utf8<span class="symbol">&amp;amp;</span>serverTimezone=Asia/Shanghai<span class="symbol">&amp;amp;</span>useSSL=false&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123456&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--        &lt;mapper resource=&quot;com/huang/mybatis01/mapper/UserMapper.xml&quot;/&gt;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.huang.mybatis01.mapper&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2021/07/16/MyBatis%E5%9F%BA%E7%A1%80/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
+  <nav class="article-nav">
     
+    
+      <a href="/2021/07/16/MyBatis%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Mybatis 基础</div>
+      </a>
+    
+  </nav>
 
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-SpringBoot-Vue部署阿里云liunx服务器"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/"
-    >SpringBoot-Vue部署阿里云liunx服务器</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
-  <time datetime="2021-07-14T07:20:59.959Z" itemprop="datePublished">2021-07-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-  </div>
    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><ul>
-<li>SpringBoot - Vue 前后端分离项目确保能够在本机完成前后端连接，正常访问！</li>
-<li>阿里云部署了 java 环境。</li>
-<li>配好 mysql 环境。</li>
-<li>Tomcat 不用也行，因为SpringBoot 已经内置了Tomcat</li>
-</ul>
-<h1 id="一、前后端合并"><a href="#一、前后端合并" class="headerlink" title="一、前后端合并"></a>一、前后端合并</h1><p>1、打包 前端静态资源</p>
-<p>注意：</p>
-<ul>
-<li>Vue 中的项目文件的 url 改为 服务器的IP 地址，不是本地的IP地址。</li>
-<li>确保打包前的Vue 项目没有任何错误！</li>
-</ul>
-<p>在项目的路径下打开cmd 输入 <code>npm run build</code></p>
-<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20201024171245.png" alt="image-20201024171238333"></p>
-<p>看到输出 <code>Build complete</code> 即代表打包成功！</p> 
-      <a class="article-more-link" href="/2021/07/14/SpringBoot-Vue%E9%83%A8%E7%BD%B2%E9%98%BF%E9%87%8C%E4%BA%91liunx%E6%9C%8D%E5%8A%A1%E5%99%A8/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" rel="tag">项目部署</a></li></ul>
-
-    </footer>
-  </div>
-
-    
  
-    
-</article>
-
-    
-    <article
-  id="post-一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"
-    >一篇搞定 SpringBoot+Mybatis+Shiro 实现多角色权限管理</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="article-date">
-  <time datetime="2021-07-14T07:07:55.454Z" itemprop="datePublished">2021-07-14</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B4%E5%90%88/">整合</a>
-  </div>
    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>初衷：我在网上想找整合springboot+mybatis+shiro并且多角色认证的博客，发现找了好久也没有找到想要的，现在自己会了，就打算写个博客分享出去,希望能帮到你。<br>原创不易，请点赞支持！</p>
-</blockquote>
-<blockquote>
-<p>该项目不会将过多基础，直接实战，比较使用于有一点基础的， 并且想整合springboot+mybatis+shiro的朋友们。</p>
-</blockquote>
-<p>代码和数据库sql都放在github,链接如下：<a target="_blank" rel="noopener" href="https://github.com/zhiyuwyu/springboot-mybatis-shiro.git">https://github.com/zhiyuwyu/springboot-mybatis-shiro.git</a></p>
-<h2 id="1、了解需求"><a href="#1、了解需求" class="headerlink" title="1、了解需求"></a>1、了解需求</h2><h3 id="1-1、需求"><a href="#1-1、需求" class="headerlink" title="1.1、需求"></a>1.1、需求</h3><ul>
-<li>首页页面必须登录成功之后才能访问</li>
-<li>所有用户、游客等都可访问登录页面、测试页面，无需登录</li>
-<li>拥有 root 角色的用户可以访问所有页面，包括添加页面、删除页面、查询页面、测试页面等</li>
-<li>拥有admin 角色的用户可以访问添加页面，查询页面、测试页面，除了删除页面不能访问</li>
-<li>拥有 user 角色的用户可以访问 查询页面、测试页面，除了添加页面、删除页面不能访问 
-      <a class="article-more-link" href="/2021/07/14/%E4%B8%80%E7%AF%87%E6%90%9E%E5%AE%9A%20SpringBoot+Mybatis+Shiro%20%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%A7%92%E8%89%B2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/" rel="tag">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shiro/" rel="tag">Shiro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
+     
 </article>
 
-    
-  </article>
-  
-
-  
 </section>
-</div>
-
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -605,6 +378,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
