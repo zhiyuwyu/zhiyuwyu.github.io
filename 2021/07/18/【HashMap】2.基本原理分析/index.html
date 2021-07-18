@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="Better Mind Better Life" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>【HashMap】2.基本原理分析 |  HuangZhiyuBlog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <!-- mermaid -->
+      
+    <link rel="alternate" href="/atom.xml" title="HuangZhiyuBlog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-【HashMap】2.基本原理分析"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【HashMap】2.基本原理分析
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/07/18/%E3%80%90HashMap%E3%80%912.%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2021-07-18T12:31:14.496Z" itemprop="datePublished">2021-07-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HashMap/">HashMap</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="1-HashMap的继承体系是什么样的？"><a href="#1-HashMap的继承体系是什么样的？" class="headerlink" title="1. HashMap的继承体系是什么样的？"></a>1. HashMap的继承体系是什么样的？</h2><p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314134746.png" alt="01_HashMap"></p>
+<h2 id="2-Node数据结构分析？"><a href="#2-Node数据结构分析？" class="headerlink" title="2. Node数据结构分析？"></a>2. Node数据结构分析？</h2><p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314134849.png" alt="03_Node类图"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;   <span class="comment">// 对key的hashcode值进行hash运算后得到的值，存储在Entry，避免重复计算</span></span><br><span class="line">    <span class="keyword">final</span> K key;      <span class="comment">// key 值    </span></span><br><span class="line">    V value;           <span class="comment">// value 值</span></span><br><span class="line">    Node&lt;K,V&gt; next;    <span class="comment">// 指向链表的下一个结点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="3-底层存储结构介绍？"><a href="#3-底层存储结构介绍？" class="headerlink" title="3. 底层存储结构介绍？"></a>3. 底层存储结构介绍？</h2><p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314134807.png" alt="02_HashMap底层存储结构 "></p>
+<p>总的存储结构：数组+链表（1.8后尾插）+红黑树</p>
+<h2 id="4-put数据原理分析？"><a href="#4-put数据原理分析？" class="headerlink" title="4. put数据原理分析？"></a>4. put数据原理分析？</h2><p><strong>下来详细展示了 node 在 HashMap 中的数组下标位置</strong></p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314134926.png" alt="04_map-put过程形象图"></p>
+<p><strong>下面流程图详细暂时了 在HashMap 中的put 过程</strong></p>
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314141923.png" alt="202005012213360"></p>
+<h2 id="5-什么是Hash碰撞？"><a href="#5-什么是Hash碰撞？" class="headerlink" title="5. 什么是Hash碰撞？"></a>5. 什么是Hash碰撞？</h2><p>HashMap是使用哈希表来存储的。当我们要新增或查找某个元素，就把当前元素的关键字通过哈希函数映射到数组中的某个位置，通过数组下标一次定位就可完成操作。</p>
+<p><strong>而哈希冲突就是两个不同的元素，通过哈希函数计算后得出的实际存储地址相同。</strong></p>
+<p>或者说，当我们对某个元素进行哈希运算后得到一个存储地址，然而要进行插入的时候，发现已经被其他元素占用了，其实这就是所谓的哈希冲突。</p>
+<p><strong>为解决冲突问题，可以采用开放地址法和链地址法等，在Java中HashMap采用了链地址法。</strong></p>
+<p><strong>链地址法</strong>，简单来说，就是数组加链表的结合。在每个数组中都一个链表结构，当数据被哈希函数计算后，就得到数组下标，把数据放在对应下标元素的数组中，如果数组中已经有元素，就转变为链表存在已存在的数据后面。</p>
+<p><strong>哈希函数</strong>十分重要，好的哈希函数要把不同的键计算出来的结果十分分散的分布，分散的越均匀，发生Hash碰撞的概率就越小，map的存取效率就会越高，存储空间的利用率越好。</p>
+<h2 id="6-什么是链化、树化？"><a href="#6-什么是链化、树化？" class="headerlink" title="6. 什么是链化、树化？"></a>6. 什么是链化、树化？</h2><p><strong>什么时候发生链化？</strong></p>
+<p>当产生哈希冲突的时候就开始链化。通俗点说就是，数据被哈希函数计算后，如果数组中已经有元素，就转变为链表存在已存在的数据后面。</p>
+<p><strong>什么时候发生树化（红黑树）？</strong></p>
+<p>在链表长度大于 8 并且 表的长度大于 64 的时候会转化红黑树</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">    p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">        treeifyBin(tab, hash);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-jdk8-为什么引入红黑树？"><a href="#7-jdk8-为什么引入红黑树？" class="headerlink" title="7. jdk8 为什么引入红黑树？"></a>7. jdk8 为什么引入红黑树？</h2><p>在平常我们用HashMap的时候，HashMap里面存储的key是具有良好的hash算法的key（比如String、Integer等包装类），冲突几率自然微乎其微，此时链表几乎不会转化为红黑树</p>
+<p>但是当key为我们自定义的对象时，我们可能采用了不好的hash算法，使HashMap中key的冲突率极高，但是这时HashMap为了保证高速的查找效率，就引入了红黑树来优化查询了。</p>
+<p><strong>红黑树的引入保证了在大量hash冲突的情况下，HashMap还具有良好的查询性能。</strong></p>
+<blockquote>
+<p><strong>举个例子，若hash算法写的不好，一个桶中冲突1024个key，使用链表平均需要查询512次，但是红黑树仅仅10次。</strong></p>
+</blockquote>
+<p>红黑树虽然本质上是一棵二叉查找树，但它在二叉查找树的基础上增加了着色和相关的性质使得红黑树相对平衡，从而保证了红黑树的查找、插入、删除的时间复杂度最坏为O(log n)。加快检索速率。</p>
+<p><strong>问题：为什么树化的临界值为8？</strong></p>
+<p>通过源码我们得知HashMap源码作者通过泊松分布算出，当桶中结点个数为8时，出现的几率是亿分之6的，因此常见的情况是桶中个数小于8的情况，此时链表的查询性能和红黑树相差不多，因为转化为树还需要时间和空间，所以此时没有转化成树的必要。</p>
+<p><strong>问题：为什么不使用AVL树而使用红黑树？</strong></p>
+<p>红黑树和AVL树都是最常用的平衡二叉搜索树，它们的查找、删除、修改都是O(lgn) time</p>
+<p>AVL树和红黑树有几点比较和区别：</p>
+<p>（1）AVL树是更加严格的平衡，因此可以提供更快的查找速度，一般读取查找密集型任务，适用AVL树。<br>（2）红黑树更适合于插入修改密集型任务。<br>（3）通常，AVL树的旋转比红黑树的旋转更加难以平衡和调试。</p>
+<p>红黑树相比avl树，在检索的时候效率其实差不多，都是通过平衡来二分查找。但对于插入删除等操作效率提高很多。红黑树不像avl树一样追求绝对的平衡，他允许局部很少的不完全平衡，这样对于效率影响不大，但省去了很多没有必要的调平衡操作，avl树调平衡有时候代价较大，所以效率不如红黑树。</p>
+<h2 id="8-HashMap-扩容原理？"><a href="#8-HashMap-扩容原理？" class="headerlink" title="8. HashMap 扩容原理？"></a>8. HashMap 扩容原理？</h2><blockquote>
+<p>DK1.7与JDK1.8的扩容机制有所不同。</p>
+</blockquote>
+<h3 id="JDK1-7"><a href="#JDK1-7" class="headerlink" title="JDK1.7"></a>JDK1.7</h3><p>扩容必须满足两个条件：</p>
+<p>1、 存放新值的时候当前已有元素的个数必须大于等于阈值<br>2、 存放新值的时候当前存放数据发生hash碰撞（当前key计算的hash值换算出来的数组下标位置已经存在值）</p>
+<p>在JDK1.7中，先判断是否需要扩容，然后再存放新元素。</p>
+<p>从JDK1.7的put方法中，当将要存储的数据经过计算存入的位置目前为空，就使用addEntry将数据存入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加新的元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ((size &gt;= threshold) &amp;&amp; (<span class="keyword">null</span> != table[bucketIndex])) &#123; <span class="comment">//threshold为当前容量乘负载因子</span></span><br><span class="line">            resize(<span class="number">2</span> * table.length);<span class="comment">//当size超过临界阈值threshold，并且即将发生哈希冲突时进行扩容</span></span><br><span class="line">            hash = (<span class="keyword">null</span> != key) ? hash(key) : <span class="number">0</span>;</span><br><span class="line">            bucketIndex = indexFor(hash, table.length);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        createEntry(hash, key, value, bucketIndex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.7中扩容条件有两个：</p>
+<p>要判断是否到达阈值(负载因子<em>当前容量)<br>当前桶的位置不为空(产生了一次哈希冲突)。</em>*<br>只有size超过临界阈值threshold，并且即将发生哈希冲突时进行扩容，扩容后再添加元素。扩容时调用resize()方法进行，数组长度变为两倍：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩容方法</span></span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> newCapacity)</span> </span>&#123;   <span class="comment">//传入新的容量</span></span><br><span class="line">     Entry[] oldTable = table;    <span class="comment">//引用扩容前的Entry数组</span></span><br><span class="line">      <span class="keyword">int</span> oldCapacity = oldTable.length;         </span><br><span class="line">      <span class="keyword">if</span> (oldCapacity == MAXIMUM_CAPACITY) &#123;  <span class="comment">//扩容前的数组大小如果已经达到最大(2^30)了</span></span><br><span class="line">          threshold = Integer.MAX_VALUE; <span class="comment">//修改阈值为int的最大值(2^31-1)，这样以后就不会扩容了</span></span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  </span><br><span class="line">     Entry[] newTable = <span class="keyword">new</span> Entry[newCapacity];  <span class="comment">//初始化一个新的Entry数组</span></span><br><span class="line">     transfer(newTable);                         <span class="comment">//！！将数据转移到新的Entry数组里，数据迁移！！</span></span><br><span class="line">     table = newTable;                           <span class="comment">//HashMap的table属性引用新的Entry数组</span></span><br><span class="line">     threshold = (<span class="keyword">int</span>)(newCapacity * loadFactor);<span class="comment">//修改阈值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>resize()方法还调用了transfer()方法进行数据迁移，用来把原来的数据复制到新扩展的HashMap中，而这个函数也导致了HashMap的线程不安全：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据迁移的方法，头插法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable, <span class="keyword">boolean</span> rehash)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> newCapacity = newTable.length;</span><br><span class="line">　　　　　<span class="comment">//for循环中的代码，逐个遍历链表，重新计算索引位置，将老数组数据复制到新数组中去（数组不存储实际数据，所以仅仅是拷贝引用而已）</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">null</span> != e) &#123;</span><br><span class="line">                Entry&lt;K,V&gt; next = e.next;</span><br><span class="line">                <span class="keyword">if</span> (rehash) &#123;</span><br><span class="line">                    e.hash = <span class="keyword">null</span> == e.key ? <span class="number">0</span> : hash(e.key);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">                <span class="comment">//将当前entry的next链指向新的索引位置,newTable[i]有可能为空，有可能也是个entry链，如果是entry链，直接在链表头部插入。</span></span><br><span class="line">                <span class="comment">//以下三行代码多线程造成环</span></span><br><span class="line">                e.next = newTable[i];</span><br><span class="line">                newTable[i] = e;</span><br><span class="line">                e = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>transfer()方法将老数组中的数据逐个链表地遍历，扔到新的扩容后的数组中，我们的数组索引位置的计算是通过 对key值的hashcode进行hash扰乱运算后，再通过和 length-1进行位运算得到最终数组索引位置。</p>
+<h3 id="DK1-8"><a href="#DK1-8" class="headerlink" title="DK1.8"></a>DK1.8</h3><p>Java8不再像Java7中那样需要满足两个条件，Java8中扩容只需要满足一个条件：当前存放新值（注意不是替换已有元素位置时）的时候已有元素的个数大于等于阈值（已有元素等于阈值，下一个存放后必然触发扩容机制）</p>
+<p>注：在JDK1.8 中的put方法中，是先添加元素，添加元素之后再判断数组的容量超过阈值就直接扩容，和jdk1.7的顺序不同。(JDK1.8添加完完素之后判断是否进行扩容)</p>
+<p>DK8的rehash过程很有趣，相比JDK7做了不少优化，我们来看下这里的rehash过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 数组扩容为之前2倍大小的代码省略，这里主要分析rehash过程。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (oldTab != <span class="keyword">null</span>) &#123;</span><br><span class="line"> <span class="comment">// 遍历旧数组</span></span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">   Node&lt;K,V&gt; e;</span><br><span class="line">   <span class="keyword">if</span> ((e = oldTab[j]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">     oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 1. 如果旧数组中不存在碰撞,则直接移动到新数组的位置</span></span><br><span class="line">     <span class="keyword">if</span> (e.next == <span class="keyword">null</span>)</span><br><span class="line">        newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e;</span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">        <span class="comment">// 2. 如果存在碰撞，且节点类型是树节点，则进行树节点拆分(挂载到扩容后的数组中或者转为链表)</span></span><br><span class="line">        ((TreeNode&lt;K,V&gt;)e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">     <span class="keyword">else</span> &#123; <span class="comment">// preserve order</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 处理冲突是链表的情况,会保留原有节点的顺序</span></span><br><span class="line">       Node&lt;K,V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>;</span><br><span class="line">       Node&lt;K,V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>;</span><br><span class="line">       Node&lt;K,V&gt; next;</span><br><span class="line">       <span class="keyword">do</span> &#123;</span><br><span class="line">         next = e.next;</span><br><span class="line">         <span class="comment">// 4. 判断扩容后元素是否在原有的位置(这里非常巧妙,下面会分析)</span></span><br><span class="line">         <span class="keyword">if</span> ((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (loTail == <span class="keyword">null</span>)</span><br><span class="line">               loHead = e;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               loTail.next = e;</span><br><span class="line">           loTail = e;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="comment">// 5. 元素不是在原有位置</span></span><br><span class="line">         <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">if</span> (hiTail == <span class="keyword">null</span>)</span><br><span class="line">               hiHead = e;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               hiTail.next = e;</span><br><span class="line">           hiTail = e;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125; <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 6. 将扩容后未改变index的元素复制到新数组</span></span><br><span class="line">       <span class="keyword">if</span> (loTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">         loTail.next = <span class="keyword">null</span>;</span><br><span class="line">         newTab[j] = loHead;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 7. 将扩容后改变了index位置的元素复制到新数组</span></span><br><span class="line">       <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">         hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">         <span class="comment">// 8. index改变后,新的下标是j+oldCap,这里也很巧妙，下面会分析</span></span><br><span class="line">         <span class="comment">//扩容后的新位置只有两个，要么新位置的下标和原来位置一样，要么就是在原来下标的基础上加上扩容大小。</span></span><br><span class="line">         newTab[j + oldCap] = hiHead;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码中展现了整个rehash（扩容后，将原来数据迁移旧数据中药重新计算下标）的过程，先遍历旧数组中的元素，接着做下面的事情</p>
+<p>如果旧数组中不存在数据碰撞(未挂载链表或者红黑树),那么直接将元素赋值到新数组中，其中index=e.hash &amp; (newCap - 1)。<br>如果存在碰撞，且节点类型是树节点，则进行树节点拆分(挂载到扩容后的数组中或者转为链表)<br>如果存在碰撞，且节点是链表，则处理链表的情况,rehash过程会保留节点原始顺序(JDK7中不会保留，这也是导致jdk7中多线程出现死循环的原因)<br>判断元素在扩容后是否还处于原有的位置，这里通过(e.hash &amp; oldCap) == 0判断,oldCap表示扩容前数组的大小。<br>发现元素不是在原有位置，更新hiTail和hiHead的指向关系<br>将扩容后未改变index的元素复制到新数组<br>将扩容后改变了index位置的元素复制到新数组，新数组的下标是 j + oldCap。</p>
+<p>其中第4点和第5点中将链表的元素分为两部分(do…while部分)，一部分是rehash后index未改变的元素，一部分是index被改变的元素。分别用两个指针来指向头尾节点。</p>
+<p>比如当oldCap=8时,1–&gt;9–&gt;17都挂载在tab[1]上,而扩容后，1–&gt;17挂载在tab[1]上,9挂载在tab[9]上。<br>那么是如何确定rehash后index是否被改变呢？改变之后的index又变成了多少呢？</p>
+<p>这里的设计很是巧妙，还记得HashMap中数组大小是2的n次幂吗?当我们计算索引位置的时候，使用的是 e.hash &amp; (table.length -1)。</p>
+<p>这里我们讨论数组大小从8扩容到16的过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tab.length -<span class="number">1</span> = <span class="number">7</span>   <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line">e.hashCode = x      <span class="number">0</span> x x x x</span><br><span class="line">==============================</span><br><span class="line">                    <span class="number">0</span> <span class="number">0</span> y y y  </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/ZhiyuHuang/image2/raw/master/img/20210314134943.jpg" alt="扩容-链表处理"></p>
+<p>扩容后，index的位置由低四位来决定,而低三位和扩容前一致。也就是说扩容后index的位置是否改变是由高字节来决定的,也就是说我们只需要将hashCode和高位进行运算即可得到index是否改变。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/07/18/%E3%80%90HashMap%E3%80%912.%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashMap/" rel="tag">HashMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2021/07/18/%E3%80%90HashMap%E3%80%911.%E8%AE%A4%E8%AF%86%E6%95%A3%E5%88%97%E8%A1%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【HashMap】1.认识散列表</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> 黄芝育
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+
+
+
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/zhiyu.jpg" alt="HuangZhiyuBlog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+  </div>
+</body>
+
+</html>
