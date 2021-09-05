@@ -33,8 +33,7 @@
 
       <!-- mermaid -->
       
-    <link rel="alternate" href="/atom.xml" title="HuangZhiyuBlog" type="application/atom+xml">
-</head>
+    </head>
   </html>
 </html>
 
@@ -156,6 +155,80 @@
     
     
     
+    
+    <article
+  id="post-设计模式—单例模式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
+    >【设计模式】单例模式</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2021-09-05T07:13:12.617Z" itemprop="datePublished">2021-09-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="1-单例设计模式"><a href="#1-单例设计模式" class="headerlink" title="1 单例设计模式"></a>1 单例设计模式</h2><ul>
+<li>属于创造性模式，提供了一种创建对象的最佳方式</li>
+<li>单例模式 <code>Singleton Pattern</code> 是 Java 中最简单的设计模式之一</li>
+<li> 这种模式涉及到一个单一的类，该类只能有一个实例，且该类必须自行创建这个实例。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。 </li>
+</ul>
+<h2 id="2-单例模式的结构"><a href="#2-单例模式的结构" class="headerlink" title="2 单例模式的结构"></a>2 单例模式的结构</h2><ul>
+<li>单例类。只能创建一个实例的类</li>
+<li>访问量。使用该单例类</li>
+</ul>
+<h2 id="3-单例模式的实现"><a href="#3-单例模式的实现" class="headerlink" title="3 单例模式的实现"></a>3 单例模式的实现</h2><p> <strong>单例设计模式分类两种：</strong></p>
+<ul>
+<li>饿汉式：类加载就会导致该单实例对象被创建 </li>
+<li>懒汉式：类加载不会导致该单实例对象被创建，而是首次使用该对象时才会创建 </li>
+</ul>
+<blockquote>
+<p> 核心</p>
+</blockquote>
+<p><strong>单例设计模式核心就是将类的构造方法私有化，之后在类的内部产生实例化对象，并通过类名引用类的静态方法（static）返回实例化对象的引用。</strong></p> 
+      <a class="article-more-link" href="/2021/09/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
     
     <article
   id="post-【HashMap】2.基本原理分析"
